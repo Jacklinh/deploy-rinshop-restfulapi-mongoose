@@ -28,14 +28,6 @@ const staffs = [
         role: "admin",
     },
     {
-        fullName: "Nguyễn Văn An",
-        email: "an.nguyen@example.com",
-        password: "password123",
-        phone: '0975224571',
-        active: true,
-        role: "subAdmin",
-    },
-    {
         fullName: "Lê Thị Hoa",
         email: "hoa.le@example.com",
         password: "password123",
