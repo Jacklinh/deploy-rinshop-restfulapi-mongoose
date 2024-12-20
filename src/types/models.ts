@@ -1,4 +1,5 @@
 import { ObjectId } from "mongoose";
+import exp from "node:constants";
 
 export type TypeStaff = {
     _id?: ObjectId;
@@ -98,3 +99,46 @@ export type TypeCarousel = {
     active?: boolean
 }
 
+export type TypeResume = {
+    _id?: ObjectId,
+    personalInfo: {
+        avatar: string,
+        fullName: string,
+        birthday: string,
+        email: string,
+        phone: string,
+        github: string,
+        address: string,
+    },
+    education: [
+        {
+            institution: string, degree: string, year: string, detail: string
+        }
+    ],
+    skills: [
+        {
+            nameSkill: string,
+            percentage: number,
+            detail: [{
+                value: string
+            }]
+        }
+    ]
+    experience: [
+        { company: string, 
+            role: string, 
+            duration: string, 
+            description: string 
+        }
+    ],
+    projects: [
+        { 
+            name: string,
+            description: string, 
+            link: string, 
+            role: string,
+            image: string
+        }
+    ],
+    
+}
