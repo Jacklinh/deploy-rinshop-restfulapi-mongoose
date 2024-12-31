@@ -11,7 +11,7 @@ const ROLES = {
 };
 //1. Get All Staffs
 //GET localhost:8000/api/v1/staffs
-router.get('', staffsController.findAll);
+router.get('', authenticateToken,authorizationAccess(ROLES.VIEW),staffsController.findAll);
 //2. Get One staff
 //GET localhost:8000/api/v1/staffs/:id
 router.get('/:id',authenticateToken,authorizationAccess(ROLES.VIEW), staffsController.findByID)
