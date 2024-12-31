@@ -5,7 +5,7 @@ import { fa } from "@faker-js/faker";
 const resumeSchema = new mongoose.Schema<TypeResume>({
     personalInfo: {
         avatar: { type: String, required: false },
-        fullName: { type: String, required: true },
+        fullName: { type: String, required: false },
         birthday: { type: String, required: false },
         email: { type: String, required: false },
         phone: { type: String, required: false },
