@@ -48,11 +48,13 @@ const createDocument = async (req: Request, res: Response, next: NextFunction)=>
           })
         }
         else{
-        //Nếu upload hình thành công thì mới tạo sản phẩm
-        const product = await categoriesService.createDocument({
+        const categoryData = {
             ...req.body,
-            banner: `uploads/${req.file?.filename}`, //cập nhật lại link sản phẩm
-        })
+            // Nếu có hình ảnh, cập nhật link sản phẩm, nếu không thì để null hoặc một giá trị mặc định
+            banner: req.file ? `uploads/${req.file.filename}` : null, // Cập nhật lại link sản phẩm nếu có hình ảnh
+        };
+
+        const product = await categoriesService.createDocument(categoryData);
         sendJsonSuccess(res)(product)
         }
       })
