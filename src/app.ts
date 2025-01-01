@@ -19,7 +19,9 @@ const app: Express = express();
 // Danh sách các nguồn cho phép
 const allowedOrigins = [
     'https://deploy-rinshop-admin.vercel.app',
-    'https://deploy-rinshop-client-nextjs.vercel.app'
+    'https://deploy-rinshop-client-nextjs.vercel.app',
+    'https://deploy-rinshop-restfulapi-mongoose.vercel.app/api/v1/upload/photo',
+    'https://deploy-rinshop-restfulapi-mongoose.vercel.app'
 ];
 // Cấu hình middleware CORS
 app.use(cors({
