@@ -1,9 +1,19 @@
-import express from "express";
+import express, {Express, Request, Response, NextFunction} from 'express';
 import multer from 'multer';
 import { uploadImage, uploadImages } from "../../helpers/multerUpload";
 import { sendJsonSuccess } from "../../helpers/responseHandler";
+import cors from 'cors'
+import path from "path";
 const router = express.Router();
-
+// upload image
+const app: Express = express();
+app.use(cors())
+/* Bắt được dữ liệu từ body của request */
+app.use(express.json())
+//Mã hóa url
+app.use(express.urlencoded({ extended: true }));
+// Khai báo thư mục chứa tài nguyên tĩnh */
+app.use(express.static(path.join(__dirname, '../public')))  
 // upload 1 ảnh
 router.post('/photo', (req, res, next) => {
     uploadImage(req, res, function (err) {
