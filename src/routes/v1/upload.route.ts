@@ -7,7 +7,24 @@ import path from "path";
 const router = express.Router();
 // upload image
 const app: Express = express();
-app.use(cors())
+// Danh sách các nguồn cho phép
+const allowedOrigins = [
+    'https://deploy-rinshop-admin.vercel.app',
+    'https://deploy-rinshop-client-nextjs.vercel.app'
+];
+// Cấu hình middleware CORS
+app.use(cors({
+    origin: (origin, callback) => {
+        // Nếu không có origin (ví dụ: khi gọi từ Postman), cho phép
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Các phương thức cho phép
+    allowedHeaders: ['Content-Type', 'Authorization'], // Các header cho phép
+}));
 /* Bắt được dữ liệu từ body của request */
 app.use(express.json())
 //Mã hóa url
