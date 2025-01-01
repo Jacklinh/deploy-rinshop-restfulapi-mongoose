@@ -39,7 +39,7 @@ app.use('/api/v1/resumes', resumeRoute)
 app.use((rep: Request, res: Response, next: NextFunction) => {
     res.header("Access-Control-Allow-Origin", "*"); // Cho phép tất cả các nguồn
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next(createError(404))
+    next()
 })
 // Báo lỗi ở dạng JSON
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
