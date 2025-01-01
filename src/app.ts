@@ -37,6 +37,9 @@ app.use('/api/v1/carousel', carouselRoute)
 app.use('/api/v1/resumes', resumeRoute)
 // errors 404, not found
 app.use((rep: Request, res: Response, next: NextFunction) => {
+    next(createError(404))
+})
+app.use((rep: Request, res: Response, next: NextFunction) => {
     res.header("Access-Control-Allow-Origin", "*"); // Cho phép tất cả các nguồn
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next()
